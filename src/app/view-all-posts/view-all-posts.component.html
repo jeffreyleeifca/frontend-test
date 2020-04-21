@@ -1,0 +1,19 @@
+<div fxLayout="row wrap" fxLayoutAlign="center center"
+  *ngFor="let item of postList | paginate: { itemsPerPage: 10, currentPage: p }">
+  <mat-card fxFlex="70%" (click)="goToPage(item?.id)">
+
+    <mat-card-header>
+      Title : <span class="title">{{item?.title}}</span>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>Body : <span class="content-body">{{item?.body}}</span></p>
+    </mat-card-content>
+
+  </mat-card>
+</div>
+
+<pagination-controls fxLayout="row wrap" fxLayoutAlign="center center" maxSize="5" directionLinks="true" autoHide="true" responsive="true" previousLabel="Previous"
+  nextLabel="Next" screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+  screenReaderCurrentLabel="You're on page" (pageChange)="p = $event">
+</pagination-controls>
